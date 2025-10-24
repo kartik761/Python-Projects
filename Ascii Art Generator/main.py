@@ -29,7 +29,7 @@ width, height = im.size
 pix = im.load()
 
 outputImage = Image.new('RGB', (charWidth * width, charHeight * height), color=(0,0,0))
-d = ImageDraw.Draw(outputImage)
+draw = ImageDraw.Draw(outputImage)
 
 
 
@@ -40,8 +40,9 @@ for i in range(height):
         gray = int(r/3 + g/3 + b/3)
         pix[j,i] = (gray, gray, gray)
         text_file.write(getChar(gray))
-        d.text((j*charWidth, i* charHeight),getChar(gray), font = fnt, fill = (r,g,b))
+        draw.text((j*charWidth, i* charHeight),getChar(gray), font = fnt, fill = (r,g,b))
     
     text_file.write('\n')
+
 
 outputImage.save('output.png')
